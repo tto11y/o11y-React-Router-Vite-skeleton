@@ -1,3 +1,125 @@
+# O11y's Handbook
+
+this repo contains a skeleton React router project that leverages Vite
+
+below you find details on ...
+- how to set up your local environment (on macOS) to run this application
+- how to build and run the application
+- how the application is structured
+
+---
+
+## Setup
+
+on macOS
+### Install nvm
+```shell
+  brew install nvm
+```
+- see https://formulae.brew.sh/formula/nvm#default
+- check successful installation with `nvm current`
+
+```console
+foo@bar:~$ nvm current
+v22.14.0
+```   
+
+
+### Install and setup NodeJS
+```shell
+  nvm install 22
+```
+- installs NodeJS v22.14.0 (LTS)
+- the output should look like the following:
+
+```console
+foo@bar:~$ nvm install 22
+Downloading and installing node v22.14.0...
+Downloading https://nodejs.org/dist/v22.14.0/node-v22.14.0-darwin-arm64.tar.xz...
+############################################################################# 100.0%
+Computing checksum with sha256sum
+Checksums matched!
+Now using node v22.14.0 (npm v10.9.2)
+```
+
+#### Set default NodeJS version
+
+```shell
+  nvm alias default 22
+```
+
+```console
+foo@bar:~$ nvm alias default 22
+default -> 22 (-> v22.14.0)
+```
+
+### Install the project dependencies
+
+```shell
+  npm install
+```
+
+---
+
+## Project structure
+
+### Components
+
+Components are located in [/components](apps/o11y-self-service-frontend/src/components)
+
+To keep a clean file structure, we follow the following guidelines for components:
+1. for each component create a dedicated folder
+2. put each of the following in a separate file
+    - the component, (*.tsx)
+    - its corresponding styles, (*.styles.tsx)
+    - and tests (*.test.tsx)
+3. child components should reside under the folder of their parent component
+
+NOTE: Some components might not need custom styles or tests. In this case you can omit the respective file.
+
+```text
+e.g.
+
+/components
+  ├── Card/
+  │    ├── Card.tsx
+  │    ├── Card.styles.tsx
+  │    ├── Card.test.tsx
+  │    ├── CardHeader/
+  │    │    ├── CardHeader.tsx
+  │    │    ├── CardHeader.styles.tsx
+  │    │    ├── CardHeader.test.tsx
+  ├── Footer/
+  │    ├── Footer.tsx
+  │    ├── Footer.styles.tsx
+  │    ├── Footer.test.tsx
+  │    ├── Links/
+  │    │    ├── Links.tsx
+  │    │    ├── Links.styles.tsx
+  │    │    ├── Links.test.tsx
+```
+
+### Custom hooks
+
+Custom hooks are located in [/hooks](apps/o11y-self-service-frontend/src/hooks)
+
+To keep a clean file structure, we follow the following guidelines for custom hooks:
+1. put each custom hook in a separate file
+2. group custom hooks in folders, if they are related by domain
+
+```text
+e,g,
+/hooks
+  ├── user/
+  │    ├── useUserData.ts
+  │    ├── useUserPermissions.ts
+  ├── useFetchData.ts
+  ├── useThemeToggle.ts
+```
+
+
+---
+
 # Welcome to React Router!
 
 A modern, production-ready template for building full-stack React applications using React Router.
